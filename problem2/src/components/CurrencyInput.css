@@ -1,0 +1,58 @@
+.currency-input {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.currency-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #4a4a4a;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding-right: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 15px;
+    margin: 20px;
+    background-color: #f9f9f9;
+}
+
+.amount-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 20px;
+    text-align: left;
+}
+
+
+.token {
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.sell-bg .input-container {
+    background-color: white;
+}
+
+.left-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.label-inside {
+    font-size: 14px;
+    font-weight: bold;
+    color: #4a4a4a;
+    text-align: left;
+    margin-bottom: 5px;
+}
