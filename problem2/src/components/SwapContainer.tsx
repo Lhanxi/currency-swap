@@ -3,6 +3,7 @@ import "./SwapContainer.css";
 import ExpiryInput from "./ExpiryInput";
 import CurrencyInput from "./CurrencyInput";
 import RateInput from "./RateInput";
+import ConnectWallet from "./ConnectWallet";
 
 interface PriceData {
     currency: string;
@@ -22,7 +23,6 @@ const SwapContainer: React.FC<SwapContainerProps> = ({ prices }) => {
     const [activeTab, setActiveTab] = useState("Swap");
     const [rate, setRate] = useState("");
 
-    // ✅ Ensure the availableCurrencies list is updated correctly
     const availableCurrencies = Array.from(new Set(prices.map((p) => p.currency)));
 
     useEffect(() => {
@@ -51,9 +51,9 @@ const SwapContainer: React.FC<SwapContainerProps> = ({ prices }) => {
 
     return (
         <div className="exchange-container">
-            <h2>Exchange Currency</h2>
+            <h1>Exchange Currency</h1>
+            <div className={`swap-container ${activeTab === "Limit" ? "limit-mode" : ""}`}>
 
-            <div className="swap-container">
                 <div className="tab-container">
                     <p className={activeTab === "Swap" ? "tab active" : "tab"} onClick={() => setActiveTab("Swap")}>
                         Swap
@@ -65,7 +65,7 @@ const SwapContainer: React.FC<SwapContainerProps> = ({ prices }) => {
 
                 <CurrencyInput
                     label="Sell"
-                    token={selectedPayToken || "Select a token"}
+                    token={selectedPayToken}
                     amount={payAmount}
                     currencies={availableCurrencies}
                     disabled={!selectedReceiveToken}
@@ -80,9 +80,10 @@ const SwapContainer: React.FC<SwapContainerProps> = ({ prices }) => {
                 />
                 <CurrencyInput
                     label="Buy"
-                    token={selectedReceiveToken || "Select a token"}
+                    token={selectedReceiveToken || "Select a Token"}
                     amount={receiveAmount}
                     currencies={availableCurrencies}
+                    disabled={!selectedReceiveToken || selectedReceiveToken === "Select a Token"}
                     onAmountChange={(value) => {
                         setReceiveAmount(value);
                         setLastUpdated("receive");
@@ -106,6 +107,7 @@ const SwapContainer: React.FC<SwapContainerProps> = ({ prices }) => {
                         <ExpiryInput />
                     </div>
                 )}
+                <ConnectWallet />
             </div>
         </div>
     );

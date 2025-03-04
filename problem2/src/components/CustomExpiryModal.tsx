@@ -13,17 +13,37 @@ const CustomExpiryModal: React.FC<CustomExpiryModalProps> = ({ onClose, onSetCus
     const handleSetExpiry = () => {
         const expiryText = `${hours} Hours ${minutes} Minutes`;
         onSetCustomExpiry(expiryText);
+        onClose();
     };
 
     return (
-        <div className="custom-expiry-modal">
-            <div className="modal-content">
-                <h3>Set up custom period</h3>
+        <div className="modal-overlay" onClick={onClose}>
+            <div className="custom-expiry-modal" onClick={(e) => e.stopPropagation()}>
+                <div className="modal-header">
+                    <h3>Set up custom period</h3>
+                    <button className="close-button" onClick={onClose}>×</button>
+                </div>
+                <span className="custom-label">Custom period</span>
                 <div className="input-group">
-                    <input type="number" min="0" value={hours} onChange={(e) => setHours(Number(e.target.value))} />
-                    <span>Hours</span>
-                    <input type="number" min="0" max="59" value={minutes} onChange={(e) => setMinutes(Number(e.target.value))} />
-                    <span>Minutes</span>
+                    <div className="input-wrapper">
+                        <input
+                            type="number"
+                            min="0"
+                            placeholder="Hours"
+                            value={hours === 0 ? "" : hours}
+                            onChange={(e) => setHours(Number(e.target.value))}
+                        />
+                    </div>
+                    <div className="input-wrapper">
+                        <input
+                            type="number"
+                            min="0"
+                            max="59"
+                            placeholder="Minutes"
+                            value={minutes === 0 ? "" : minutes}
+                            onChange={(e) => setMinutes(Number(e.target.value))}
+                        />
+                    </div>
                 </div>
                 <div className="modal-buttons">
                     <button className="cancel" onClick={onClose}>Cancel</button>

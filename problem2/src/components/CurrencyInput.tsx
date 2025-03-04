@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CurrencyInput.css";
-import CurrencyList from "./CurrencyList";
+import TokenSelector from "./TokenSelector";
 
 interface CurrencyInputProps {
     label: string;
@@ -21,6 +21,8 @@ const CurrencyInput: React.FC<CurrencyInputProps> = ({
     onAmountChange,
     onCurrencyChange
 }) => {
+    const [isSelectorOpen, setSelectorOpen] = useState(false);
+
     return (
         <div className={`currency-input ${label.toLowerCase() === "sell" ? "sell-bg" : ""}`}>
             <div className="input-container">
@@ -35,8 +37,29 @@ const CurrencyInput: React.FC<CurrencyInputProps> = ({
                         disabled={disabled}
                     />
                 </div>
-                <CurrencyList currencies={currencies} selectedCurrency={token} onSelectCurrency={onCurrencyChange} />
+                <button className="token-button" onClick={() => setSelectorOpen(true)}>
+                    {token && token !== "Select a Token" && (
+                        <img
+                            src={`/token-icons-main/tokens/${token.toUpperCase()}.svg`}
+                            alt={token}
+                            className="token-icon"
+                        />
+                    )}
+                    {token}
+                    <span className="caret">▼</span>
+                </button>
             </div>
+
+            {isSelectorOpen && (
+                <TokenSelector
+                    tokens={currencies}
+                    onSelect={(selectedToken) => {
+                        onCurrencyChange(selectedToken);
+                        setSelectorOpen(false);
+                    }}
+                    onClose={() => setSelectorOpen(false)}
+                />
+            )}
         </div>
     );
 };

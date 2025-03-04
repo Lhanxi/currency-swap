@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./RateInput.css";
-import CurrencyList from "./CurrencyList";
+import TokenSelector from "./TokenSelector";
 
 interface RateInputProps {
     sellToken: string;
@@ -20,6 +20,8 @@ const RateInput: React.FC<RateInputProps> = ({
     availableCurrencies,
 }) => {
     const [rate, setRate] = useState("");
+    const [isSellSelectorOpen, setSellSelectorOpen] = useState(false);
+    const [isBuySelectorOpen, setBuySelectorOpen] = useState(false);
 
     const handleRateChange = (value: string) => {
         setRate(value);
@@ -30,7 +32,29 @@ const RateInput: React.FC<RateInputProps> = ({
         <div className="rate-input-container">
             <div className="rate-label">
                 <span>When 1</span>
-                <CurrencyList currencies={availableCurrencies} selectedCurrency={sellToken} onSelectCurrency={onSellTokenChange} />
+
+                <button className="token-button" onClick={() => setSellSelectorOpen(true)}>
+                    <img
+                        src={`/token-icons-main/tokens/${sellToken.toUpperCase()}.svg`}
+                        alt={sellToken}
+                        className="token-icon"
+                        onError={(e) => (e.currentTarget.style.display = "none")}
+                    />
+                    {sellToken}
+                    <span className="caret">▼</span>
+                </button>
+
+                {isSellSelectorOpen && (
+                    <TokenSelector
+                        tokens={availableCurrencies}
+                        onSelect={(selectedToken) => {
+                            onSellTokenChange(selectedToken);
+                            setSellSelectorOpen(false);
+                        }}
+                        onClose={() => setSellSelectorOpen(false)}
+                    />
+                )}
+
                 <span>is worth</span>
             </div>
 
@@ -43,7 +67,28 @@ const RateInput: React.FC<RateInputProps> = ({
                     placeholder="0.0"
                     disabled={!sellToken || !buyToken}
                 />
-                <CurrencyList currencies={availableCurrencies} selectedCurrency={buyToken} onSelectCurrency={onBuyTokenChange} />
+
+                <button className="token-button" onClick={() => setBuySelectorOpen(true)}>
+                    <img
+                        src={`/token-icons-main/tokens/${buyToken.toUpperCase()}.svg`}
+                        alt={buyToken}
+                        className="token-icon"
+                        onError={(e) => (e.currentTarget.style.display = "none")}
+                    />
+                    {buyToken}
+                    <span className="caret">▼</span>
+                </button>
+
+                {isBuySelectorOpen && (
+                    <TokenSelector
+                        tokens={availableCurrencies}
+                        onSelect={(selectedToken) => {
+                            onBuyTokenChange(selectedToken);
+                            setBuySelectorOpen(false);
+                        }}
+                        onClose={() => setBuySelectorOpen(false)}
+                    />
+                )}
             </div>
         </div>
     );
