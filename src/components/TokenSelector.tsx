@@ -51,7 +51,7 @@ const TokenSelector: React.FC<TokenSelectorProps> = ({ tokens, onSelect, onClose
                             className="token-item"
                             onClick={() => onSelect(token)}
                         >
-                            <img src={`/token-icons-main/tokens/${token.toUpperCase()}.svg`}
+                            <img src={`${process.env.PUBLIC_URL}/token-icons-main/tokens/${token.toUpperCase()}.svg`}
                                 alt={token}
                                 className="token-icon"
                                 onError={(e) => (e.currentTarget.style.display = "none")} />
