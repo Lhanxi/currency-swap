@@ -1,0 +1,16 @@
+.connect-wallet-button {
+    width: 90%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    background: linear-gradient(to right, #4facfe, #007bff);
+    transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+.connect-wallet-button:hover {
+    background: linear-gradient(to right, #0084ff, #0056b3);
+}

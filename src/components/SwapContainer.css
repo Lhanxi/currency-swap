@@ -1,0 +1,60 @@
+.swap-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.exchange-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.exchange-container h1 {
+    font-size: 1.5rem;
+    font-weight: 1000;
+    color: #2d3748;
+}
+
+.tab-container {
+    display: flex;
+    gap: 20px;
+    padding-top: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #777;
+    cursor: pointer;
+    justify-content: flex-start;
+    width: 100%;
+    padding-left: 40px;
+}
+
+.tab {
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+}
+
+.tab.active {
+    font-weight: bold;
+    color: black;
+}
+
+.swap-content,
+.limit-content {
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.limit-order-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+    box-sizing: border-box;
+    width: 480px;
+}

@@ -1,0 +1,29 @@
+.expiry-date-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+    background: white;
+    padding: 10px 12px;
+    border-radius: 16px;
+    margin-top: -16px;
+    margin-bottom: 8px;
+    margin-left: 4px;
+    height: 110px;
+    width: 80px;
+    border: 1px solid #ccc;
+}
+
+.expiry-label {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: #6c757d;
+    width: 50%;
+    font-weight: 500;
+}
+
+.info-icon {
+    margin-left: 4px;
+    cursor: pointer;
+}
