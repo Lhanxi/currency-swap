@@ -35,7 +35,7 @@ const RateInput: React.FC<RateInputProps> = ({
 
                 <button className="token-button" onClick={() => setSellSelectorOpen(true)}>
                     <img
-                        src={`${process.env.PUBLIC_URL}/token-icons-main/tokens/${sellToken.toUpperCase()}.svg`}
+                        src={`${process.env.PUBLIC_URL}/token-icons-main/tokens/${sellToken}.svg`}
                         alt={sellToken}
                         className="token-icon"
                         onError={(e) => (e.currentTarget.style.display = "none")}
@@ -70,7 +70,7 @@ const RateInput: React.FC<RateInputProps> = ({
 
                 <button className="token-button" onClick={() => setBuySelectorOpen(true)}>
                     <img
-                        src={`${process.env.PUBLIC_URL}/token-icons-main/tokens/${buyToken.toUpperCase()}.svg`}
+                        src={`${process.env.PUBLIC_URL}/token-icons-main/tokens/${buyToken}.svg`}
                         alt={buyToken}
                         className="token-icon"
                         onError={(e) => (e.currentTarget.style.display = "none")}
