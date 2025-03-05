@@ -38,13 +38,12 @@
     outline: none;
     background: transparent;
     text-align: left;
-    margin-right: -70px;
-    width: 200px;
-
+    margin-left: 0px;
+    width: 100%;
 }
 
 .rate-input:disabled {
-    background: #f9f9f9;
+    background: white;
     cursor: not-allowed;
 }
 

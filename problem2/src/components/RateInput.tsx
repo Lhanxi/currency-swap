@@ -35,7 +35,7 @@ const RateInput: React.FC<RateInputProps> = ({
 
                 <button className="token-button" onClick={() => setSellSelectorOpen(true)}>
                     <img
-                        src={`/token-icons-main/tokens/${sellToken.toUpperCase()}.svg`}
+                        src={`${process.env.PUBLIC_URL}/token-icons-main/tokens/${sellToken}.svg`}
                         alt={sellToken}
                         className="token-icon"
                         onError={(e) => (e.currentTarget.style.display = "none")}
@@ -67,17 +67,18 @@ const RateInput: React.FC<RateInputProps> = ({
                     placeholder="0.0"
                     disabled={!sellToken || !buyToken}
                 />
-
-                <button className="token-button" onClick={() => setBuySelectorOpen(true)}>
-                    <img
-                        src={`/token-icons-main/tokens/${buyToken.toUpperCase()}.svg`}
-                        alt={buyToken}
-                        className="token-icon"
-                        onError={(e) => (e.currentTarget.style.display = "none")}
-                    />
-                    {buyToken}
-                    <span className="caret">▼</span>
-                </button>
+                <div className="rate-token-button">
+                    <button className="token-button" onClick={() => setBuySelectorOpen(true)}>
+                        <img
+                            src={`${process.env.PUBLIC_URL}/token-icons-main/tokens/${buyToken}.svg`}
+                            alt={buyToken}
+                            className="token-icon"
+                            onError={(e) => (e.currentTarget.style.display = "none")}
+                        />
+                        {buyToken}
+                        <span className="caret">▼</span>
+                    </button>
+                </div>
 
                 {isBuySelectorOpen && (
                     <TokenSelector

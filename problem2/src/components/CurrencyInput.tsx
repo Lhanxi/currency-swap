@@ -40,7 +40,7 @@ const CurrencyInput: React.FC<CurrencyInputProps> = ({
                 <button className="token-button" onClick={() => setSelectorOpen(true)}>
                     {token && token !== "Select a Token" && (
                         <img
-                            src={`/token-icons-main/tokens/${token.toUpperCase()}.svg`}
+                            src={`${process.env.PUBLIC_URL}/token-icons-main/tokens/${token}.svg`}
                             alt={token}
                             className="token-icon"
                         />
